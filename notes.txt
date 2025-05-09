@@ -1,0 +1,108 @@
+fuel entry : 
+
+	bike, select
+	date, autofill(customization)
+	fuel type;
+	fuel price(autofill according to the date)
+	entry data, by fuel or by liters.
+	payment mode;
+	odometer data (after filling).
+	is under reserve
+
+
+
+Odometer tracker : 
+	
+
+
+
+
+Actual core concept : 
+	fuel entry data,
+	distance tracker, (tracking the distance from start to end using the help of trip A and B or odometer)
+
+
+
+(trip detials) : 
+A : to track a distance for a trip A,
+B : to track a distance for a trip B,
+F : to track the distance when the bike falls to reserve point
+
+whenever the bike is on a run, it will start to read the km in all readers :  odometer, Trip A, Trip B, Trip F(if fall to reserve).
+Trip A and B can be manually set to 0 while starting a trip
+edge cases : 
+	enough fuel -> fuel refill -> trip A = 0-km, trip B = 0-km, trip F = 0-km;
+	enough fuel -> fuel refill -> trip A = x-km, trip B = 0-km, trip F = 0-km;
+	enough fuel -> fuel refill -> trip A = 0-km, trip B = y-km, trip F = 0-km;
+	enough fuel -> fuel refill -> trip A = x-km, trip B = y-km, trip F = 0-km;
+	in reserve  -> fuel refill -> trip A = 0-km, trip B = 0-km, trip F = z-km;
+	in reserve  -> fuel refill -> trip A = x-km, trip B = 0-km, trip F = z-km;
+	in reserve  -> fuel refill -> trip A = 0-km, trip B = y-km, trip F = z-km;
+	in reserve  -> fuel refill -> trip A = x-km, trip B = y-km, trip F = z-km;
+
+
+edge cases without the trip A and B : 
+	enough fuel -> fuel refill -> trip F = 0-km;
+	enough fuel -> fuel refill -> trip F = z-km;
+	in reserve  -> fuel refill -> trip F = 0-km;
+	in reserve  -> fuel refill -> trip F = z-km;
+
+-----------------------------------------
+info from the bike,
+
+	While fueling : 
+		trip F : on/off
+			if on:
+				enter the trip F reading
+		enter the odometer reading.
+	While staring a trip : 
+		Trip A reading, (include start or not, if not the starts from 0), (include mid or not, if not mid = end)
+		odo reading,
+
+--------------------------------------------
+
+------------------------------
+eg scenario 
+A start : 0;
+odo (A start):  1000,
+--
+fueling at 1100;
+--
+odo (A end) : 1200;
+A end : A start + (odo (A end) - odo (A start)) = 0 + (1200 - 1000) = 200;
+--
+Trip A : fueling
+---------------------------------
+
+-------------------------------------
+eg scenario
+A start = 0-km
+odo - 2000-km
+--
+A mid = 12.4-km
+--
+fueling : 
+	reserve : 11.2-km
+	odo : 2020.4-km
+--
+A end = 24.8-km
+odo = 2024.8-km
+
+---
+entry : fueling at odo = 2012.4km, reserve = 11.2-km
+A-end : odo = 2024.8-km, end = 24.8-km
+--- 
+
+trip A - whole journey 
+point   :  Start      fuel      End
+odo(KM) :  2000/()    2020.4    ()/2024.8
+A(KM)   :  0          ()        24.8
+res(KM) :  0          11.2      0
+
+On trip A fueled at        : A end - (odo fuel - odo start) = 24.8 - (2020.4 - 2000) = 24.8 - 20.4 = 4.4-km
+On trip A end odo is at    : For this start of odo of trip A needed  = Odo start of Trip A + A end - A start = 2000 + 24.8 - 0 = 2024.8-km
+On trip A end odo start at : For this End of odo of trip A needed = Odo end Of trip A - A end + A strart = 2024.8 - 24.8 + 0 = 2000-km	
+-------------------------------------------
+
+entering the odometer details for the record is the best one
+	

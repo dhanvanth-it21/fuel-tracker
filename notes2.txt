@@ -1,0 +1,63 @@
+New Bike entry
+Bike : 
+--> Important Bike details
+--> current Bike odometer reading : 1000-KM
+--> fuel consumption (from date) : 0-L
+--> Amount spent on fuel : 0-Rs
+
+New Record for fuel : 
+--> On fueling 
+------> odometer reading : x-KM;
+------> when reserve is on
+--------------> true -> Trip F reading : y-KM
+--------------> false -> Trip F reading : 0-KM
+------> fueled by Rs
+--------------> true -> enter the amount spent
+--------------> false -> enter the liter added
+------> Bunk type and date to fetch the petrol cost via API
+
+New Record for the trip : this trip can be a specific feature or else it is a reading from the odometer
+--> Trip A Start
+------> Odometer reading (Optional) : x-KM
+------> is trip A resetted
+--------------> true -> A_Start : 0-KM;
+--------------> false -> A_Start : y-KM;
+--> Trip A Mid
+------> Trip A reading at mid point (can have multiple mid) 
+--> Trip A End
+------> Odometer reading : x-KM (Optional if the odometer is recorder during the start of trip A)
+------> A_End : z-KM
+
+
+(there can be any number of trip planned at a single travel, where they can be marked under different names)
+(few trips can be grouped by the use of labels)(Even a trips mid journey can be labeled) -> this labels will be helpful for grouping the journey and getting insights from them.
+
+
+
+data insights : 
+1. Mileage
+	--> Per trip mileage
+	--> Average mileage
+	--> Mileage on reserve fuel
+2. Fuel Spending
+	--> cost per given timeline
+	--> Cost per kilometre
+	--> total cost spent
+3. Distance Tracking
+	--> total distance covered
+	--> Total distance covered per:
+		--> Trip, labels
+		--> timeline
+		--> Reserve segment
+	--> average daily ride distance
+
+	--> km you ride between refuels
+ 4. Reserve Usage
+	--> Count of reserve hits
+	--> Average distance covered on reserve
+	--> total distance covered on reserve
+5. Trip-to-odo synchronization correctness
+6. Trip and Label wise 
+	--> total distance
+	--> reserve hits count
+	--> etc...

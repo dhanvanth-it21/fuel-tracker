@@ -1,0 +1,42 @@
+Notes3
+
+Data model : 3 important model class needed
+
+Vehicle {
+  id: string;
+  name: string;
+  model: string;
+  fuelType: "Petrol" | "Diesel";
+  tankCapacity: number;
+  odoStart: number; 
+  totalFuelUsed: number;
+  totalSpent: number;
+  hasTripMeter: boolean;
+  createdAt: Date;
+}
+
+
+FuelEntry {
+	id: string;
+	vehicleId : string;
+	odoAtFuel: number;
+	reserveUsed: boolean;
+	tripFReading?: number; // required if reserveUsed = true
+	fuelAddedLitres?: number;
+  	amountPaid?: number;
+	fuelPrice?: number;
+	bunkBrand : "Bharat Petroleum" | "Reliance" | "	HP" | "Indian Oil" | "Nayara" | "Shell"
+	date: Date;
+}
+
+TripEntry {
+	id: string;
+  	vehicleId: string;
+  	tripName: string;
+  	labels: string[];
+	baseOdo: number;
+	tripStart: number;
+	tripMid: number[];
+	tripEnd: number;
+	date: Date;
+}
