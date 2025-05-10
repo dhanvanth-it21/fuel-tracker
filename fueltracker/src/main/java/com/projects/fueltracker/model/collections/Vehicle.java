@@ -22,7 +22,7 @@ public class Vehicle {
     private String numberPlate;
     private String brandName;
     private String modelName;
-    private String fuelId;
+    private String[] fuelIds;
     private float fuelTankCapacity;
     private float odometerReading;
     private float totalFuelUsed;
@@ -37,12 +37,12 @@ public class Vehicle {
     private Date updatedDate = new Date();
 
 
-    public Vehicle(String name, String numberPlate, String brandName, String modelName, String fuelId, float fuelTankCapacity, float odometerReading, float totalFuelUsed, float totalAmountSpent, boolean hasTripMeter) {
+    public Vehicle(String name, String brandName, String numberPlate, String modelName, String[] fuelIds, float fuelTankCapacity, float odometerReading, float totalFuelUsed, float totalAmountSpent, boolean hasTripMeter) {
         this.name = name;
-        this.numberPlate = numberPlate;
         this.brandName = brandName;
+        this.numberPlate = numberPlate;
         this.modelName = modelName;
-        this.fuelId = fuelId;
+        this.fuelIds = fuelIds;
         this.fuelTankCapacity = fuelTankCapacity;
         this.odometerReading = odometerReading;
         this.totalFuelUsed = totalFuelUsed;

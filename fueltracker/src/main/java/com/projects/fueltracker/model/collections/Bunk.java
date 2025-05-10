@@ -20,6 +20,12 @@ public class Bunk {
     private String _id;
 
     private String name;
+    private String brandId;
+    private String state;
+    private String district;
+    private String place;
+    private String description;
+
 
     @CreatedDate
     private Date createdDate = new Date();
@@ -28,7 +34,12 @@ public class Bunk {
     private Date updatedDate = new Date();
 
 
-    public Bunk(String name) {
+    public Bunk(String name, String brandId, String state, String district, String place, String description) {
         this.name = name;
+        this.brandId = brandId;
+        this.state = state;
+        this.district = district;
+        this.place = place;
+        this.description = description;
     }
 }

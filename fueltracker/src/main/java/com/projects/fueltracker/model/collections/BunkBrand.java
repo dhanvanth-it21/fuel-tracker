@@ -9,19 +9,17 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
-import java.util.Set;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Document(collection = "fuel_entry")
-public class Label {
+@Document(collection = "bunk_brand")
+public class BunkBrand {
 
     @Id
     private String _id;
 
     private String name;
-    private Set<String> tripEntryId;
 
     @CreatedDate
     private Date createdDate = new Date();
@@ -29,8 +27,7 @@ public class Label {
     @LastModifiedDate
     private Date updatedDate = new Date();
 
-    public Label(String name, Set<String> tripEntryId) {
+    public BunkBrand(String name) {
         this.name = name;
-        this.tripEntryId = tripEntryId;
     }
 }

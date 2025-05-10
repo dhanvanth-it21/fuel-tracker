@@ -36,6 +36,7 @@ public class TripEntry {
     @LastModifiedDate
     private Date updatedDate = new Date();
 
+
     public TripEntry(String vehicleId, String tripName, float baseOdometerReading, float tripStart, float[] tripMid, float tripEnd, Date tripDateStart, Date tripDateEnd, Set<String> labelsId) {
         VehicleId = vehicleId;
         this.tripName = tripName;

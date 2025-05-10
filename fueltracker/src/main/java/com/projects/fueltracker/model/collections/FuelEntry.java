@@ -23,6 +23,7 @@ public class FuelEntry {
     private float odometerReading;
     private boolean isReserveUsed;
     private float tripFReading;
+    private String fuelId;
     private Date fueledDate;
     private float fuelPricePerLiter;
     private float fuelLiter;
@@ -36,16 +37,16 @@ public class FuelEntry {
     private Date updatedDate = new Date();
 
 
-    public FuelEntry(String vehicleId, String bunkId, float fuelAmount, float fuelLiter, float fuelPricePerLiter, Date fueledDate, boolean isReserveUsed, float odometerReading, float tripFReading) {
+    public FuelEntry(String vehicleId, float odometerReading, boolean isReserveUsed, float tripFReading, String fuelId, Date fueledDate, float fuelPricePerLiter, float fuelLiter, float fuelAmount, String bunkId) {
         this.vehicleId = vehicleId;
-        this.bunkId = bunkId;
-        this.fuelAmount = fuelAmount;
-        this.fuelLiter = fuelLiter;
-        this.fuelPricePerLiter = fuelPricePerLiter;
-        this.fueledDate = fueledDate;
-        this.isReserveUsed = isReserveUsed;
         this.odometerReading = odometerReading;
+        this.isReserveUsed = isReserveUsed;
         this.tripFReading = tripFReading;
+        this.fuelId = fuelId;
+        this.fueledDate = fueledDate;
+        this.fuelPricePerLiter = fuelPricePerLiter;
+        this.fuelLiter = fuelLiter;
+        this.fuelAmount = fuelAmount;
+        this.bunkId = bunkId;
     }
-
 }
