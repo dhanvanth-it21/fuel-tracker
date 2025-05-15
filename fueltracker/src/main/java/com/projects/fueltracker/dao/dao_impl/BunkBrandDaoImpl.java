@@ -16,4 +16,14 @@ public class BunkBrandDaoImpl implements BunkBrandDao {
     public BunkBrand save(BunkBrand bunkBrandPreSave) {
         return bunkBrandTemplate.save(bunkBrandPreSave);
     }
+
+    @Override
+    public BunkBrand getByName(String name) {
+        return bunkBrandTemplate.getByName(name);
+    }
+
+    @Override
+    public BunkBrand getById(String id) {
+        return bunkBrandTemplate.getById(id);
+    }
 }

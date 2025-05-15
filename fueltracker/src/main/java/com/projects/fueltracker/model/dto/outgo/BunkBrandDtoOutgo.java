@@ -11,4 +11,6 @@ public class BunkBrandDtoOutgo {
 
     private String _id;
     private String name;
+    private boolean active;
+
 }

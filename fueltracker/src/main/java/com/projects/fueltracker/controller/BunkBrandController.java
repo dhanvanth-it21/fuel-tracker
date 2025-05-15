@@ -1,5 +1,6 @@
 package com.projects.fueltracker.controller;
 
+import com.projects.fueltracker.converter.BunkBrandConverter;
 import com.projects.fueltracker.model.dto.income.BunkBrandDtoIncome;
 import com.projects.fueltracker.model.dto.outgo.BunkBrandDtoOutgo;
 import com.projects.fueltracker.model.responseWrapper.ApiResponse;
@@ -19,7 +20,7 @@ import org.springframework.web.bind.annotation.*;
 public class BunkBrandController {
 
     @Autowired
-    private BunkBrandService bunkBrandService;
+    private BunkBrandConverter bunkBrandConverter;
 
 
 
@@ -31,18 +32,47 @@ public class BunkBrandController {
             @RequestBody
             BunkBrandDtoIncome bunkBrandDtoIncome
     ) {
-        BunkBrandDtoOutgo bunkBrandDtoOutgo = bunkBrandService.createBunkBrand(bunkBrandDtoIncome);
-        ApiResponse<BunkBrandDtoOutgo> apiResponse = ResponseUtil.success(201, "Created successfully", bunkBrandDtoOutgo, null);
-        return new ResponseEntity<>(apiResponse, HttpStatusCode.valueOf(apiResponse.getStatus()));
+        log.info("==> [POST] Start - Creating Bunk Brand: '{}'", bunkBrandDtoIncome.getName());
 
+        BunkBrandDtoOutgo bunkBrandDtoOutgo = bunkBrandConverter.createBunkBrand(bunkBrandDtoIncome);
+        ApiResponse<BunkBrandDtoOutgo> apiResponse = ResponseUtil.success(201, "Created successfully", bunkBrandDtoOutgo, null);
+
+        log.info("==> [POST] End - Created Successfully: id='{}', name='{}'",apiResponse.getData().get_id(), apiResponse.getData().getName());
+        return new ResponseEntity<>(apiResponse, HttpStatusCode.valueOf(apiResponse.getStatus()));
     }
 
     //Update------------------------------------------------------------------------------------------------------------
 
-    @PutMapping
-    public void updateBunkBrand() {
+    @PutMapping("/{id}")
+    public ResponseEntity<ApiResponse<BunkBrandDtoOutgo>> updateBunkBrand(
+            @PathVariable String id,
+            @Valid
+            @RequestBody BunkBrandDtoIncome bunkBrandDtoIncome
+    ) {
+        log.info("==> [PUT] Start - Update Bunk Brand for the given id");
 
-    } //nedd the updated data with respective its _id
+        BunkBrandDtoOutgo bunkBrandDtoOutgo = bunkBrandConverter.updateBunkBrand(id, bunkBrandDtoIncome);
+        ApiResponse<BunkBrandDtoOutgo> apiResponse = ResponseUtil.success(200, "Update Successfully", bunkBrandDtoOutgo, null);
+
+        log.info("==> [PUT] End - Updated successfully, {}", apiResponse.getData().toString());
+        return new ResponseEntity<ApiResponse<BunkBrandDtoOutgo>>(apiResponse, HttpStatusCode.valueOf(apiResponse.getStatus()));
+    }
+
+    @PutMapping("/{id}/{activeStatus}")
+    public ResponseEntity<ApiResponse<BunkBrandDtoOutgo>> changeActiveStatus(
+            @PathVariable String id,
+            @PathVariable Boolean activeStatus
+    ) {
+        log.info("==> [PUT] Start - Change active status for Bunk Brand with the given id");
+
+        BunkBrandDtoOutgo bunkBrandDtoOutgo = bunkBrandConverter.changeActiveStatus(id, activeStatus);
+        String message = bunkBrandDtoOutgo == null ? "No Changes Occurred" : "Changed Successfully";
+        ApiResponse<BunkBrandDtoOutgo> apiResponse = ResponseUtil.success(200, message, bunkBrandDtoOutgo, null);
+
+        log.info("==> [PUT] Start - Successfully changed");
+        return new ResponseEntity<ApiResponse<BunkBrandDtoOutgo>>(apiResponse, HttpStatusCode.valueOf(apiResponse.getStatus()));
+
+    }
 
     //Read--------------------------------------------------------------------------------------------------------------
 
@@ -50,19 +80,21 @@ public class BunkBrandController {
     public ResponseEntity<ApiResponse<BunkBrandDtoOutgo>> getBunkBrand(
             @PathVariable String id
     ) {
-        System.out.println(id);
+        log.info("==> [GET] Start, BunkBrand for the given id");
+
         BunkBrandDtoOutgo bunkBrandDtoOutgo = null;
         ApiResponse<BunkBrandDtoOutgo> apiResponse = null;
-        bunkBrandDtoOutgo = bunkBrandService.getBunkBrandById(id);
+        bunkBrandDtoOutgo = bunkBrandConverter.getBunkBrandById(id);
         apiResponse = ResponseUtil.success(200, "Fetched successfully", bunkBrandDtoOutgo, null);
+
+        log.info("==> [GET] End, BunkBrand Fetched Successfully, {}", bunkBrandDtoOutgo.toString());
         return new ResponseEntity<>(apiResponse, HttpStatusCode.valueOf(apiResponse.getStatus()));
 
     } // get by _id, get all
 
     //Delete------------------------------------------------------------------------------------------------------------
 
-    @DeleteMapping
-    public void deleteBunkBrand() {} //delete a record using the give _id; soft delete
+    //no need to delete a record, only soft delete, and it is handled by PUT request, to change the active status
 
 
 

@@ -11,9 +11,15 @@
     <!-- Setting up logging pattern for console logging -->
     <Appenders>
         <Console name="ConsoleOutput" target="SYSTEM_OUT">
+<!--                    pattern="%style{%d{ISO8601}}{white} %highlight{%-5level} [%style{%t}{bright,yellow}] : %msg%n%throwable"-->
             <PatternLayout
-                    pattern="%style{%d{ISO8601}}{white} %highlight{%-5level} [%style{%t}{bright,yellow}] : %msg%n%throwable"
-                    disableAnsi="false" />
+                    pattern = "%style{%d{yyyy-MM-dd HH:mm:ss.SSS}}{white} | \
+%style{%-20.20t}{bright,yellow} | \
+%highlight{%-5level} | \
+%style{%-45.45c{1}}{bright,cyan} | \
+%style{%-45.45M}{bright,cyan} | \
+%msg%n%throwable"
+            disableAnsi="false" />
         </Console>
 
         <!-- Setting the filename and logging pattern for log file. Also setting
@@ -22,8 +28,11 @@
                      fileName="${LOG_PATH}/${LOG_FILE_NAME}.log"
                      filePattern="${LOG_PATH}/$${date:yyyy-MM}/application-log4j2-%d{dd-MMMM-yyyy}-%i.log.gz">
             <PatternLayout>
-                <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level : %msg%n
-                </pattern>
+<!--                <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %c{1}.%M : %msg%n-->
+                <Pattern>
+                    %style{%d{yyyy-MM-dd HH:mm:ss}}{cyan} %highlight{%-5level}{FATAL=red blink, ERROR=red, WARN=yellow, INFO=green, DEBUG=blue, TRACE=blue} %style{[%thread]}{blue} %style{%c{1}.%M}{magenta} - %msg%n
+                </Pattern>
+<!--                </pattern>-->
             </PatternLayout>
             <Policies>
                 <OnStartupTriggeringPolicy />

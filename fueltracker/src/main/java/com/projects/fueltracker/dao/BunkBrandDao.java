@@ -8,4 +8,8 @@ public interface BunkBrandDao {
 
 
     BunkBrand save(BunkBrand bunkBrandPreSave);
+
+    BunkBrand getByName(String name);
+
+    BunkBrand getById(String id);
 }

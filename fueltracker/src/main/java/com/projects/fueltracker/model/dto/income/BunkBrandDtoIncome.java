@@ -17,7 +17,7 @@ public class BunkBrandDtoIncome {
     @NotEmpty(message = "Name must not be Empty and NULL")
     private String name;
 
-    @Builder.Default
-    private boolean isActive = true;
+    @NotNull(message = "Mention the Active state")
+    private Boolean active;
 
 }
