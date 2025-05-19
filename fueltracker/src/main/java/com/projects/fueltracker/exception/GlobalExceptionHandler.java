@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.util.HashMap;
+
 import java.util.Map;
 
 @Log4j2
@@ -41,6 +42,13 @@ public class GlobalExceptionHandler {
         });
         ApiResponse<Object>  apiResponse = ResponseUtil.error(422, "Unprocessable Entity", errorsMap);
         log.error("Validation fail in data found in request, check these : {}", apiResponse.getData().toString());
+        return new ResponseEntity<>(apiResponse, HttpStatusCode.valueOf(apiResponse.getStatus()));
+    }
+
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<ApiResponse<Object>> resourceNotFoundExceptionHandler(ResourceNotFoundException e) {
+        ApiResponse<Object> apiResponse = ResponseUtil.error(404, e.getMessage(), null);
+        log.error(apiResponse.getMessage());
         return new ResponseEntity<>(apiResponse, HttpStatusCode.valueOf(apiResponse.getStatus()));
     }
 }

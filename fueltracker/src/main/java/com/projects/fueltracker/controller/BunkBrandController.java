@@ -5,7 +5,6 @@ import com.projects.fueltracker.model.dto.income.BunkBrandDtoIncome;
 import com.projects.fueltracker.model.dto.outgo.BunkBrandDtoOutgo;
 import com.projects.fueltracker.model.responseWrapper.ApiResponse;
 import com.projects.fueltracker.model.responseWrapper.ResponseUtil;
-import com.projects.fueltracker.service.BunkBrandService;
 import jakarta.validation.Valid;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +20,12 @@ public class BunkBrandController {
 
     @Autowired
     private BunkBrandConverter bunkBrandConverter;
+
+    //api controllers  :
+    // ==> createBunkBrand()
+    // ==> updateBunkBrand()
+    // ==> changeActiveStatus()
+    // ==> getBunkBrand()
 
 
 
