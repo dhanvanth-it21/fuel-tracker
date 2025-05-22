@@ -14,7 +14,7 @@ import java.util.Set;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Document(collection = "fuel_entry")
+@Document(collection = "label")
 public class Label {
 
     @Id

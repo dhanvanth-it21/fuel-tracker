@@ -23,7 +23,7 @@ public class BunkController {
     //api controllers :
     // ==> addBunk()
     // ==> updateBunk()
-    // ==> aaaaaaaaa()
+    // ==> getBunk()
     // ==> aaaaaaaaa()
 
     //Create
