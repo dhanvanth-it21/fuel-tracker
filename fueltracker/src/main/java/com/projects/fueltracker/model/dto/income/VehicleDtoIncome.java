@@ -1,8 +1,11 @@
 package com.projects.fueltracker.model.dto.income;
 
+import com.projects.fueltracker.model.collections.FuelStats;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Map;
 
 @Data
 @AllArgsConstructor
@@ -16,7 +19,5 @@ public class VehicleDtoIncome {
     private String[] fuelIds;
     private float fuelTankCapacity;
     private float odometerReading;
-    private float totalFuelUsed;
-    private float totalAmountSpent;
     private boolean hasTripMeter;
 }

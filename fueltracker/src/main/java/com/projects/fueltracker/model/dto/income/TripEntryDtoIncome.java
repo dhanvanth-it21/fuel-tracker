@@ -19,5 +19,5 @@ public class TripEntryDtoIncome {
     private float tripEnd;
     private Date tripDateStart;
     private Date tripDateEnd;
-    private Set<String> labelsId;
+    private Set<String> labelIds;
 }

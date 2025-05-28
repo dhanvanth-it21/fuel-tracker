@@ -28,13 +28,13 @@ public class TripEntry {
     private float tripEnd;
     private Date tripDateStart;
     private Date tripDateEnd;
-    private Set<String> labelsId;
+    private Set<String> labelIds;
 
     @CreatedDate
-    private Date createdDate = new Date();
+    private Date createdDate;
 
     @LastModifiedDate
-    private Date updatedDate = new Date();
+    private Date updatedDate;
 
 
     public TripEntry(String vehicleId, String tripName, float baseOdometerReading, float tripStart, float[] tripMid, float tripEnd, Date tripDateStart, Date tripDateEnd, Set<String> labelsId) {
@@ -46,6 +46,6 @@ public class TripEntry {
         this.tripEnd = tripEnd;
         this.tripDateStart = tripDateStart;
         this.tripDateEnd = tripDateEnd;
-        this.labelsId = labelsId;
+        this.labelIds = labelsId;
     }
 }

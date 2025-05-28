@@ -10,16 +10,9 @@ import java.util.Map;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class VehicleDtoOutgo {
-
+public class StatsDtoOutgo {
     private String _id;
-    private String name;
-    private String numberPlate;
-    private String brandName;
-    private String modelName;
-    private String[] fuelIds;
-    private float fuelTankCapacity;
-    private float odometerReading;
+    private String VehicleId;
     private Map<String, FuelStats> fuelUsageByType;
-    private boolean hasTripMeter;
 }
+

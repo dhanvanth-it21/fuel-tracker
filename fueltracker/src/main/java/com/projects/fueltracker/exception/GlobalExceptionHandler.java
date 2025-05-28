@@ -51,4 +51,11 @@ public class GlobalExceptionHandler {
         log.error(apiResponse.getMessage());
         return new ResponseEntity<>(apiResponse, HttpStatusCode.valueOf(apiResponse.getStatus()));
     }
+
+    @ExceptionHandler(ResourceAlreadyExists.class)
+    public ResponseEntity<ApiResponse<Object>> resourceAlreadyExistsHandler(ResourceAlreadyExists e, Object data) {
+        ApiResponse<Object> apiResponse = ResponseUtil.error(409, e.getMessage(), e.getData());
+        log.error("Conflict: {}", apiResponse.getMessage());
+        return new ResponseEntity<>(apiResponse, HttpStatusCode.valueOf(apiResponse.getStatus()));
+    }
 }

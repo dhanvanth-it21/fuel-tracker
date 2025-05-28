@@ -60,7 +60,7 @@ public class VehicleController {
     ) {
         log.info("[PUT] ==> Updating vehicle by id");
 
-        VehicleDtoOutgo  vehicleDtoOutgo = vehicleConverter.updateVehilceById(id, vehicleDtoIncome);
+        VehicleDtoOutgo  vehicleDtoOutgo = vehicleConverter.updateVehicleById(id, vehicleDtoIncome);
         ApiResponse<VehicleDtoOutgo> apiResponse = ResponseUtil.success(200, "Updated successfully", vehicleDtoOutgo, null);
 
         log.info("[PUT] ==> Updated vehicle successfully by id : '{}", vehicleDtoOutgo.get_id());

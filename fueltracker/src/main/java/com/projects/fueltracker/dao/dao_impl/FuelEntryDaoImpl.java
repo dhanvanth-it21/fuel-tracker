@@ -36,4 +36,9 @@ public class FuelEntryDaoImpl implements FuelEntryDao {
         }
         return fuelEntryTemplate.save(preSaveFuelEntry);
     }
+
+    @Override
+    public FuelEntry checkForDuplication(FuelEntry preSaveFuelEntry) {
+        return fuelEntryTemplate.checkForDuplication(preSaveFuelEntry);
+    }
 }

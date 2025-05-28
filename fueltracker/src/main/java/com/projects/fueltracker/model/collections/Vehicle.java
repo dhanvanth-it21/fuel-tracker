@@ -9,6 +9,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
+import java.util.Map;
 
 @Data
 @AllArgsConstructor
@@ -25,19 +26,17 @@ public class Vehicle {
     private String[] fuelIds;
     private float fuelTankCapacity;
     private float odometerReading;
-    private float totalFuelUsed;
-    private float totalAmountSpent;
     private boolean hasTripMeter;
 
 
     @CreatedDate
-    private Date createdDate = new Date();
+    private Date createdDate;
 
     @LastModifiedDate
-    private Date updatedDate = new Date();
+    private Date updatedDate;
 
 
-    public Vehicle(String name, String brandName, String numberPlate, String modelName, String[] fuelIds, float fuelTankCapacity, float odometerReading, float totalFuelUsed, float totalAmountSpent, boolean hasTripMeter) {
+    public Vehicle(String name, String brandName, String numberPlate, String modelName, String[] fuelIds, float fuelTankCapacity, float odometerReading, boolean hasTripMeter) {
         this.name = name;
         this.brandName = brandName;
         this.numberPlate = numberPlate;
@@ -45,8 +44,6 @@ public class Vehicle {
         this.fuelIds = fuelIds;
         this.fuelTankCapacity = fuelTankCapacity;
         this.odometerReading = odometerReading;
-        this.totalFuelUsed = totalFuelUsed;
-        this.totalAmountSpent = totalAmountSpent;
         this.hasTripMeter = hasTripMeter;
     }
 }

@@ -10,4 +10,6 @@ public interface FuelEntryDao {
     FuelEntry getById(String id);
 
     FuelEntry updateById(String id, FuelEntry preSaveFuelEntry);
+
+    FuelEntry checkForDuplication(FuelEntry preSaveFuelEntry);
 }

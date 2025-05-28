@@ -34,7 +34,8 @@ public class FuelEntryConverter {
 
     public FuelEntryDtoOutgo updateFuelEntryById(String id, FuelEntryDtoIncome fuelEntryDtoIncome) {
         // Dto to Entity
-        FuelEntry preSaveFuelEntry = modelMapper.map(fuelEntryDtoIncome, FuelEntry.class);
+        FuelEntry preSaveFuelEntry = fuelEntryService.getFuelEntryById(id);
+        modelMapper.map(fuelEntryDtoIncome, preSaveFuelEntry);
         preSaveFuelEntry.set_id(id);
 
         FuelEntry postSaveFuelEntry = fuelEntryService.updateFuelEntryById(id, preSaveFuelEntry);

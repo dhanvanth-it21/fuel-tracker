@@ -24,7 +24,7 @@ public class VehicleConverter {
         Vehicle postSaveVehicle = vehicleService.addVehicle(preSaveVehicle);
 
         //Entity to Dto
-        return modelMapper.map(preSaveVehicle, VehicleDtoOutgo.class);
+        return modelMapper.map(postSaveVehicle, VehicleDtoOutgo.class);
     }
 
     public VehicleDtoOutgo getVehicleById(String id) {
@@ -35,12 +35,15 @@ public class VehicleConverter {
     }
 
 
-    public VehicleDtoOutgo updateVehilceById(String id, VehicleDtoIncome vehicleDtoIncome) {
+    public VehicleDtoOutgo updateVehicleById(String id, VehicleDtoIncome vehicleDtoIncome) {
         //Dto to Entity
-        Vehicle preSaveVehicle = modelMapper.map(vehicleDtoIncome, Vehicle.class);
+        Vehicle preSaveVehicle = vehicleService.getVehicleById(id);
+        modelMapper.map(vehicleDtoIncome, preSaveVehicle);
+
+        Vehicle postSaveVehicle = vehicleService.updateVehicleById(id, preSaveVehicle);
         preSaveVehicle.set_id(id);
 
-        Vehicle postSaveVehicle = vehicleService.updateVehilceById(id, preSaveVehicle);
+
 
         //Entity to Dto
         return modelMapper.map(postSaveVehicle, VehicleDtoOutgo.class);
