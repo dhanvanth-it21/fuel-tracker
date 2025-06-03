@@ -19,7 +19,7 @@ public class VehicleDtoOutgo {
     private String modelName;
     private String[] fuelIds;
     private float fuelTankCapacity;
+    private float initialOdometerReading;
     private float odometerReading;
-    private Map<String, FuelStats> fuelUsageByType;
     private boolean hasTripMeter;
 }

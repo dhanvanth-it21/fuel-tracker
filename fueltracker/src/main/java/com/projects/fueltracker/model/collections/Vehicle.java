@@ -25,6 +25,7 @@ public class Vehicle {
     private String modelName;
     private String[] fuelIds;
     private float fuelTankCapacity;
+    private float initialOdometerReading;
     private float odometerReading;
     private boolean hasTripMeter;
 
@@ -36,13 +37,14 @@ public class Vehicle {
     private Date updatedDate;
 
 
-    public Vehicle(String name, String brandName, String numberPlate, String modelName, String[] fuelIds, float fuelTankCapacity, float odometerReading, boolean hasTripMeter) {
+    public Vehicle(String name, String brandName, String numberPlate, String modelName, String[] fuelIds, float fuelTankCapacity, float initialOdometerReading, float odometerReading, boolean hasTripMeter) {
         this.name = name;
         this.brandName = brandName;
         this.numberPlate = numberPlate;
         this.modelName = modelName;
         this.fuelIds = fuelIds;
         this.fuelTankCapacity = fuelTankCapacity;
+        this.initialOdometerReading = initialOdometerReading;
         this.odometerReading = odometerReading;
         this.hasTripMeter = hasTripMeter;
     }

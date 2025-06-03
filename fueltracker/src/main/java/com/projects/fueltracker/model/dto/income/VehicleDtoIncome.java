@@ -18,6 +18,7 @@ public class VehicleDtoIncome {
     private String modelName;
     private String[] fuelIds;
     private float fuelTankCapacity;
+    private float initialOdometerReading;
     private float odometerReading;
     private boolean hasTripMeter;
 }

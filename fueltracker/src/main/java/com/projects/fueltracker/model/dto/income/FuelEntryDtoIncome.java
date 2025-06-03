@@ -16,7 +16,7 @@ public class FuelEntryDtoIncome {
     private boolean reserveUsed;
     private float tripFReading;
     private String fuelId;
-    private Date fueledDate;
+    private long fueledDateInMilli;
     private float fuelPricePerLiter;
     private float fuelLiter;
     private float fuelAmount;

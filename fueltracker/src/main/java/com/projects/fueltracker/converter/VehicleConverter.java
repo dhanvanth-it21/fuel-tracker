@@ -41,13 +41,9 @@ public class VehicleConverter {
         modelMapper.map(vehicleDtoIncome, preSaveVehicle);
 
         Vehicle postSaveVehicle = vehicleService.updateVehicleById(id, preSaveVehicle);
-        preSaveVehicle.set_id(id);
-
-
 
         //Entity to Dto
         return modelMapper.map(postSaveVehicle, VehicleDtoOutgo.class);
-
 
     }
 }

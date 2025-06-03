@@ -22,6 +22,7 @@ public class Stats {
 
     private String vehicleId;
     private Map<String, FuelStats> fuelUsageByType;
+    private int reserveHits;
 
 
     @CreatedDate
@@ -30,8 +31,9 @@ public class Stats {
     @LastModifiedDate
     private Date updatedDate;
 
-    public Stats(String vehicleId, Map<String, FuelStats> fuelUsageByType) {
-        vehicleId = vehicleId;
+    public Stats(String vehicleId, Map<String, FuelStats> fuelUsageByType, int reserveHits) {
+        this.vehicleId = vehicleId;
         this.fuelUsageByType = fuelUsageByType;
+        this.reserveHits = reserveHits;
     }
 }
